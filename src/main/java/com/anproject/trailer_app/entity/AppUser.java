@@ -46,6 +46,6 @@ public class AppUser {
 	private List<Like> likes = new ArrayList<>();
 
 	@OneToMany(mappedBy = "user")
-	private List<Comment> comments = new ArrayList<>();
+	private List<TrailerComment> comments = new ArrayList<>();
 
 }

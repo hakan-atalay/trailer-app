@@ -48,6 +48,6 @@ public class Trailer {
 	private List<Like> likes = new ArrayList<>();
 
 	@OneToMany(mappedBy = "trailer")
-	private List<Comment> comments = new ArrayList<>();
+	private List<TrailerComment> comments = new ArrayList<>();
 
 }

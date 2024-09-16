@@ -18,14 +18,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "comments")
-public class Comment {
+@Table(name = "trailer_comments")
+public class TrailerComment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "comment")
-	private String comment;
+	@Column(name = "trailer_comment")
+	private String trailerComment;
 
 	@Column(name = "created_at")
 	private Date createdAt;
