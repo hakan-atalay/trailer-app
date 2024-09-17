@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class LikeUpdateDTO {
 	private Long id;
-	private Boolean like;
+	private Boolean trailerLike;
 	private Long userId;
 	private Long trailerId;
 	

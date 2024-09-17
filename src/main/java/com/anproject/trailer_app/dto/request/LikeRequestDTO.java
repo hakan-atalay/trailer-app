@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class LikeRequestDTO {
-	private Boolean like;
+	private Boolean trailerLike;
 	private Long userId;
 	private Long trailerId;
 	
