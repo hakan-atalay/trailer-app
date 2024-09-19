@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.anproject.trailer_app.dto.request.TrailerRequestDTO;
 import com.anproject.trailer_app.dto.request.TrailerUpdateDTO;
@@ -12,12 +13,12 @@ import com.anproject.trailer_app.dto.response.TrailerResponseDTO;
 import com.anproject.trailer_app.entity.AppUser;
 import com.anproject.trailer_app.entity.Category;
 import com.anproject.trailer_app.entity.Trailer;
-import com.anproject.trailer_app.entity.TrailerComment;
 import com.anproject.trailer_app.mapper.TrailerMapper;
 import com.anproject.trailer_app.repository.AppUserRepository;
 import com.anproject.trailer_app.repository.CategoryRepository;
 import com.anproject.trailer_app.repository.TrailerRepository;
 
+@Service
 public class TrailerService {
 	
 	private final TrailerRepository trailerRepository;
@@ -47,6 +48,7 @@ public class TrailerService {
 			Category category = categoryRepository.findById(trailerUpdateDto.getCategoryId()).get();
 			AppUser appUser = appUserRepository.findById(trailerUpdateDto.getUserId()).get();
 			Trailer trailer = trailerMapper.trailerUpdateDTOtoTrailer(trailerUpdateDto);
+			trailer.setCreatedAt(trailer.getCreatedAt());
 			trailer.setUser(appUser);
 			trailer.setCategory(category);
 			trailerRepository.save(trailer);

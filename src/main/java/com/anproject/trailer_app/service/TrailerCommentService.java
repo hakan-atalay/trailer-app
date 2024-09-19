@@ -1,5 +1,6 @@
 package com.anproject.trailer_app.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,6 +37,7 @@ public class TrailerCommentService {
 
 	public void saveTrailerComment(TrailerCommentRequestDTO trailerCommentRequestDto) {
 		TrailerComment trailerComment = trailerCommentMapper.trailerCommentRequestDTOtoTrailer(trailerCommentRequestDto);
+		trailerComment.setCreatedAt(new Date());
 		trailerCommentRepository.save(trailerComment);
 	}
 	
@@ -46,6 +48,7 @@ public class TrailerCommentService {
 			AppUser appUser = appUserRepository.findById(trailercommentUpdateDto.getUserId()).get();
 			Trailer trailer = trailerRepository.findById(trailercommentUpdateDto.getTrailerId()).get();
 			TrailerComment trailerComment = trailerCommentMapper.trailerCommentUpdateDTOtoTrailer(trailercommentUpdateDto);
+			trailerComment.setCreatedAt(trailerComment.getCreatedAt());
 			trailerComment.setUser(appUser);
 			trailerComment.setTrailer(trailer);
 			trailerCommentRepository.save(trailerComment);
@@ -53,7 +56,7 @@ public class TrailerCommentService {
 		
 	}
 	
-	public void deleteRole(Long id) {
+	public void deleteTrailerComment(Long id) {
 		trailerCommentRepository.deleteById(id);
 	}
 	

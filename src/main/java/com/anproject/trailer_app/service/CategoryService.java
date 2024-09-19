@@ -42,7 +42,7 @@ public class CategoryService {
 		categoryRepository.deleteById(id);
 	}
 	
-	public CategoryResponseDTO getRolebyId(Long id) {
+	public CategoryResponseDTO getCategorybyId(Long id) {
 		Category category = categoryRepository.findById(id).orElseThrow();
 		return categoryMapper.categoryToCategoryResponseDTO(category);
 	}
