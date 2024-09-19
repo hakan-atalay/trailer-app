@@ -19,6 +19,8 @@ import com.anproject.trailer_app.dto.request.CategoryUpdateDTO;
 import com.anproject.trailer_app.dto.response.CategoryResponseDTO;
 import com.anproject.trailer_app.service.CategoryService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/categories")
 public class CategoryController {
@@ -31,14 +33,14 @@ public class CategoryController {
 	}
 
 	@PostMapping("/save")
-	public ResponseEntity<Void> saveCategory(@RequestBody CategoryRequestDTO categoryRequestDTO) {
+	public ResponseEntity<Void> saveCategory(@Valid @RequestBody CategoryRequestDTO categoryRequestDTO) {
 		categoryService.saveCategory(categoryRequestDTO);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 
 	@PutMapping("/update/{id}")
 	public ResponseEntity<Void> updateCategory(@PathVariable Long id,
-			@RequestBody CategoryUpdateDTO categoryUpdateDto) {
+			@Valid @RequestBody CategoryUpdateDTO categoryUpdateDto) {
 		categoryUpdateDto.setId(id);
 		categoryService.updateCategory(categoryUpdateDto);
 		return new ResponseEntity<>(HttpStatus.OK);

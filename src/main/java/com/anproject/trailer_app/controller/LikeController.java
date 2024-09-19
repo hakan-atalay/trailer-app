@@ -19,6 +19,8 @@ import com.anproject.trailer_app.dto.request.LikeUpdateDTO;
 import com.anproject.trailer_app.dto.response.LikeResponseDTO;
 import com.anproject.trailer_app.service.LikeService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/likes")
 public class LikeController {
@@ -31,13 +33,13 @@ public class LikeController {
 	}
 
 	@PostMapping("/save")
-	public ResponseEntity<Void> saveLike(@RequestBody LikeRequestDTO likeRequestDTO) {
+	public ResponseEntity<Void> saveLike(@Valid @RequestBody LikeRequestDTO likeRequestDTO) {
 		likeService.saveLike(likeRequestDTO);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 
 	@PutMapping("/update/{id}")
-	public ResponseEntity<Void> updateLike(@PathVariable Long id, @RequestBody LikeUpdateDTO likeUpdateDto) {
+	public ResponseEntity<Void> updateLike(@PathVariable Long id, @Valid @RequestBody LikeUpdateDTO likeUpdateDto) {
 		likeUpdateDto.setId(id);
 		likeService.updateLike(likeUpdateDto);
 		return new ResponseEntity<>(HttpStatus.OK);

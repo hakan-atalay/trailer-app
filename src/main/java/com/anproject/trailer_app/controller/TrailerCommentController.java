@@ -19,6 +19,8 @@ import com.anproject.trailer_app.dto.request.TrailerCommentUpdateDTO;
 import com.anproject.trailer_app.dto.response.TrailerCommentResponseDTO;
 import com.anproject.trailer_app.service.TrailerCommentService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/trailer-comments")
 public class TrailerCommentController {
@@ -31,14 +33,14 @@ public class TrailerCommentController {
 	}
 
 	@PostMapping("/save")
-	public ResponseEntity<Void> saveTrailerComment(@RequestBody TrailerCommentRequestDTO trailerCommentRequestDto) {
+	public ResponseEntity<Void> saveTrailerComment(@Valid @RequestBody TrailerCommentRequestDTO trailerCommentRequestDto) {
 		trailerCommentService.saveTrailerComment(trailerCommentRequestDto);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 
 	@PutMapping("/update/{id}")
 	public ResponseEntity<Void> updateTrailerComment(@PathVariable Long id,
-			@RequestBody TrailerCommentUpdateDTO trailerCommentUpdateDto) {
+			@Valid @RequestBody TrailerCommentUpdateDTO trailerCommentUpdateDto) {
 		trailerCommentUpdateDto.setId(id);
 		trailerCommentService.updateTrailerComment(trailerCommentUpdateDto);
 		return new ResponseEntity<>(HttpStatus.OK);

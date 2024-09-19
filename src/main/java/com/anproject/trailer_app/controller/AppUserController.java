@@ -19,6 +19,8 @@ import com.anproject.trailer_app.dto.request.AppUserUpdateDTO;
 import com.anproject.trailer_app.dto.response.AppUserResponseDTO;
 import com.anproject.trailer_app.service.AppUserService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/users")
 public class AppUserController {
@@ -31,13 +33,13 @@ public class AppUserController {
 	}
 
 	@PostMapping("/save")
-	public ResponseEntity<String> saveUser(@RequestBody AppUserRequestDTO appUserRequestDto) {
+	public ResponseEntity<String> saveUser(@Valid @RequestBody AppUserRequestDTO appUserRequestDto) {
 		appUserService.saveUser(appUserRequestDto);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 
 	@PutMapping("/update/{id}")
-	public ResponseEntity<String> updateUser(@PathVariable Long id, @RequestBody AppUserUpdateDTO appUserUpdateDto) {
+	public ResponseEntity<String> updateUser(@PathVariable Long id, @Valid @RequestBody AppUserUpdateDTO appUserUpdateDto) {
 		appUserUpdateDto.setId(id);
 		appUserService.updateUser(appUserUpdateDto);
 		return new ResponseEntity<>(HttpStatus.OK);

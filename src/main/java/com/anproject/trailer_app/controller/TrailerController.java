@@ -19,6 +19,8 @@ import com.anproject.trailer_app.dto.request.TrailerUpdateDTO;
 import com.anproject.trailer_app.dto.response.TrailerResponseDTO;
 import com.anproject.trailer_app.service.TrailerService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/trailer")
 public class TrailerController {
@@ -31,13 +33,13 @@ public class TrailerController {
 	}
 
 	@PostMapping("/save")
-	public ResponseEntity<Void> saveTrailer(@RequestBody TrailerRequestDTO trailerRequestDto) {
+	public ResponseEntity<Void> saveTrailer(@Valid @RequestBody TrailerRequestDTO trailerRequestDto) {
 		trailerService.saveTrailer(trailerRequestDto);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 
 	@PutMapping("/update/{id}")
-	public ResponseEntity<Void> updateTrailer(@PathVariable Long id, @RequestBody TrailerUpdateDTO trailerUpdateDto) {
+	public ResponseEntity<Void> updateTrailer(@PathVariable Long id, @Valid @RequestBody TrailerUpdateDTO trailerUpdateDto) {
 		trailerUpdateDto.setId(id);
 		trailerService.updateTrailer(trailerUpdateDto);
 		return new ResponseEntity<>(HttpStatus.OK);
@@ -57,7 +59,7 @@ public class TrailerController {
 
 	@GetMapping("/all")
 	public ResponseEntity<List<TrailerResponseDTO>> getAllTrailer() {
-		List<TrailerResponseDTO> trailerResponseDtoList = trailerService.getAllTrailer();
+		List<TrailerResponseDTO> trailerResponseDtoList = trailerService.getAllTrailers();
 		return new ResponseEntity<>(trailerResponseDtoList, HttpStatus.OK);
 	}
 

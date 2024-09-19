@@ -19,6 +19,8 @@ import com.anproject.trailer_app.dto.request.RoleUpdateDTO;
 import com.anproject.trailer_app.dto.response.RoleResponseDTO;
 import com.anproject.trailer_app.service.RoleService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/roles")
 public class RoleController {
@@ -31,13 +33,13 @@ public class RoleController {
 	}
 
 	@PostMapping("/save")
-	public ResponseEntity<Void> saveRole(@RequestBody RoleRequestDTO roleRequestDto) {
+	public ResponseEntity<Void> saveRole(@Valid @RequestBody RoleRequestDTO roleRequestDto) {
 		roleService.saveRole(roleRequestDto);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 
 	@PutMapping("/update/{id}")
-	public ResponseEntity<Void> updateRole(@PathVariable Long id, @RequestBody RoleUpdateDTO roleUpdateDto) {
+	public ResponseEntity<Void> updateRole(@PathVariable Long id, @Valid @RequestBody RoleUpdateDTO roleUpdateDto) {
 		roleUpdateDto.setId(id);
 		roleService.updateRole(roleUpdateDto);
 		return new ResponseEntity<>(HttpStatus.OK);
