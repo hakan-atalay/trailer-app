@@ -6,7 +6,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AppUserUpdateDTO {
-	
 	private Long id;
 	private String nickname;
 	private String email;

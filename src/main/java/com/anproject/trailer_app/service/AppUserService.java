@@ -19,7 +19,7 @@ import com.anproject.trailer_app.repository.RoleRepository;
 
 @Service
 public class AppUserService {
-
+	
     private final AppUserRepository appUserRepository;
     private final RoleRepository roleRepository;
     private final AppUserMapper appUserMapper;

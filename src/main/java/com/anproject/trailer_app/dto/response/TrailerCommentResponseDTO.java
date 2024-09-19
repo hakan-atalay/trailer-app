@@ -8,7 +8,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class TrailerCommentResponseDTO {
-	
 	private Long id;
 	private AppUserResponseDTO appUserResponseDTO;
 	private TrailerResponseDTO trailerResponseDTO;

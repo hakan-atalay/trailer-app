@@ -11,7 +11,6 @@ import com.anproject.trailer_app.entity.TrailerComment;
 
 @Mapper(componentModel = "spring", uses = {AppUserMapper.class, TrailerMapper.class})
 public interface TrailerCommentMapper {
-	
 	TrailerCommentMapper INSTANCE = Mappers.getMapper(TrailerCommentMapper.class);
 	
 	@Mapping(source = "userId", target = "user.id")
