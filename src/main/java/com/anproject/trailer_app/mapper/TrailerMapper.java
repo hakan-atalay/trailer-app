@@ -11,6 +11,7 @@ import com.anproject.trailer_app.entity.Trailer;
 
 @Mapper(componentModel = "spring", uses = {CategoryMapper.class, AppUserMapper.class})
 public interface TrailerMapper {
+	
 	TrailerMapper INSTANCE = Mappers.getMapper(TrailerMapper.class);
 	
 	@Mapping(source = "categoryId", target = "category.id")

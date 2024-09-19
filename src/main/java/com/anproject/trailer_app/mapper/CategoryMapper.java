@@ -10,6 +10,7 @@ import com.anproject.trailer_app.entity.Category;
 
 @Mapper(componentModel = "spring")
 public interface CategoryMapper {
+	
 	CategoryMapper INSTANCE = Mappers.getMapper(CategoryMapper.class);
 
 	Category categoryRequestDTOtoCategory(CategoryRequestDTO categoryRequestDto);

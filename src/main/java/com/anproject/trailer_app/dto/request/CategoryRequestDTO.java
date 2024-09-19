@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CategoryRequestDTO {
+	
 	private String categoryName;
 
 }

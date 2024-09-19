@@ -11,6 +11,7 @@ import com.anproject.trailer_app.entity.Like;
 
 @Mapper(componentModel = "spring" ,uses = {AppUserMapper.class, TrailerMapper.class})
 public interface LikeMapper {
+	
 	LikeMapper INSTANCE = Mappers.getMapper(LikeMapper.class);
 	
 	@Mapping(source = "userId", target = "user.id")

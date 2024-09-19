@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CategoryUpdateDTO {
+	
 	private Long id;
 	private String categoryName;
 

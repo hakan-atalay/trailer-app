@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class TrailerRequestDTO {
+	
 	private String title;
 	private String url;
 	private Long categoryId;

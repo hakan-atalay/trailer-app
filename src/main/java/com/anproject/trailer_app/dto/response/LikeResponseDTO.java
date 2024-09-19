@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class LikeResponseDTO {
+	
 	private Long id;
 	private Boolean trailerLike;
 	private AppUserResponseDTO appUserResponseDTO;

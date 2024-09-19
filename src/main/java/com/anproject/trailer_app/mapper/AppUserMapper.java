@@ -11,6 +11,7 @@ import com.anproject.trailer_app.entity.AppUser;
 
 @Mapper(componentModel = "spring")
 public interface AppUserMapper {
+	
 	AppUserMapper INSTANCE = Mappers.getMapper(AppUserMapper.class);
 	
 	@Mapping(source = "roleId", target = "role.id")
