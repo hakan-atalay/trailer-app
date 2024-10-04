@@ -16,13 +16,13 @@ public class TrailerCommentRequestDTOTest {
 	private Validator validator;
 
 	@BeforeEach
-	public void setUp() {
+	void setUp() {
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		validator = factory.getValidator();
 	}
 
 	@Test
-	public void whenValidTrailerCommentRequestDTO_thenNoConstraintViolations() {
+	void whenValidTrailerCommentRequestDTO_thenNoConstraintViolations() {
 		TrailerCommentRequestDTO dto = new TrailerCommentRequestDTO();
 		dto.setUserId(1L);
 		dto.setTrailerId(1L);
@@ -34,7 +34,7 @@ public class TrailerCommentRequestDTOTest {
 	}
 
 	@Test
-	public void whenUserIdIsNull_thenConstraintViolation() {
+	void whenUserIdIsNull_thenConstraintViolation() {
 		TrailerCommentRequestDTO dto = new TrailerCommentRequestDTO();
 		dto.setUserId(null);
 		dto.setTrailerId(1L);
@@ -47,7 +47,7 @@ public class TrailerCommentRequestDTOTest {
 	}
 
 	@Test
-	public void whenTrailerIdIsNull_thenConstraintViolation() {
+	void whenTrailerIdIsNull_thenConstraintViolation() {
 		TrailerCommentRequestDTO dto = new TrailerCommentRequestDTO();
 		dto.setUserId(1L);
 		dto.setTrailerId(null);
@@ -60,7 +60,7 @@ public class TrailerCommentRequestDTOTest {
 	}
 
 	@Test
-	public void whenTrailerCommentIsBlank_thenConstraintViolation() {
+	void whenTrailerCommentIsBlank_thenConstraintViolation() {
 		TrailerCommentRequestDTO dto = new TrailerCommentRequestDTO();
 		dto.setUserId(1L);
 		dto.setTrailerId(1L);
@@ -73,7 +73,7 @@ public class TrailerCommentRequestDTOTest {
 	}
 
 	@Test
-	public void whenTrailerCommentIsNull_thenConstraintViolation() {
+	void whenTrailerCommentIsNull_thenConstraintViolation() {
 		TrailerCommentRequestDTO dto = new TrailerCommentRequestDTO();
 		dto.setUserId(1L);
 		dto.setTrailerId(1L);

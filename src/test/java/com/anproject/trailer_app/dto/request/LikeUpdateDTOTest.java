@@ -16,13 +16,13 @@ public class LikeUpdateDTOTest {
 	private Validator validator;
 
 	@BeforeEach
-	public void setUp() {
+	void setUp() {
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		validator = factory.getValidator();
 	}
 
 	@Test
-	public void whenValidLikeUpdateDTO_thenNoConstraintViolations() {
+	void whenValidLikeUpdateDTO_thenNoConstraintViolations() {
 		LikeUpdateDTO dto = new LikeUpdateDTO();
 		dto.setId(1L);
 		dto.setTrailerLike(true);
@@ -35,7 +35,7 @@ public class LikeUpdateDTOTest {
 	}
 
 	@Test
-	public void whenNullId_thenConstraintViolation() {
+	void whenNullId_thenConstraintViolation() {
 		LikeUpdateDTO dto = new LikeUpdateDTO();
 		dto.setId(null);
 		dto.setTrailerLike(true);
@@ -49,7 +49,7 @@ public class LikeUpdateDTOTest {
 	}
 
 	@Test
-	public void whenNullUserId_thenConstraintViolation() {
+	void whenNullUserId_thenConstraintViolation() {
 		LikeUpdateDTO dto = new LikeUpdateDTO();
 		dto.setId(1L);
 		dto.setTrailerLike(true);
@@ -63,7 +63,7 @@ public class LikeUpdateDTOTest {
 	}
 
 	@Test
-	public void whenNullTrailerId_thenConstraintViolation() {
+	void whenNullTrailerId_thenConstraintViolation() {
 		LikeUpdateDTO dto = new LikeUpdateDTO();
 		dto.setId(1L);
 		dto.setTrailerLike(true);
@@ -77,7 +77,7 @@ public class LikeUpdateDTOTest {
 	}
 
 	@Test
-	public void whenAllFieldsAreNull_thenMultipleConstraintViolations() {
+	void whenAllFieldsAreNull_thenMultipleConstraintViolations() {
 		LikeUpdateDTO dto = new LikeUpdateDTO();
 		dto.setId(null);
 		dto.setTrailerLike(null);

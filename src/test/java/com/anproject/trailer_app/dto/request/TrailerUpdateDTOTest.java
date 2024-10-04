@@ -16,13 +16,13 @@ public class TrailerUpdateDTOTest {
 	private Validator validator;
 
 	@BeforeEach
-	public void setUp() {
+	void setUp() {
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		validator = factory.getValidator();
 	}
 
 	@Test
-	public void whenValidTrailerUpdateDTO_thenNoConstraintViolations() {
+	void whenValidTrailerUpdateDTO_thenNoConstraintViolations() {
 		TrailerUpdateDTO dto = new TrailerUpdateDTO();
 		dto.setId(1L);
 		dto.setTitle("fsadfsadf");
@@ -36,7 +36,7 @@ public class TrailerUpdateDTOTest {
 	}
 
 	@Test
-	public void whenIdIsNull_thenConstraintViolation() {
+	void whenIdIsNull_thenConstraintViolation() {
 		TrailerUpdateDTO dto = new TrailerUpdateDTO();
 		dto.setId(null);
 		dto.setTitle("fsadfsadf");
@@ -51,7 +51,7 @@ public class TrailerUpdateDTOTest {
 	}
 
 	@Test
-	public void whenTitleIsBlank_thenConstraintViolation() {
+	void whenTitleIsBlank_thenConstraintViolation() {
 		TrailerUpdateDTO dto = new TrailerUpdateDTO();
 		dto.setId(1L);
 		dto.setTitle("");
@@ -66,7 +66,7 @@ public class TrailerUpdateDTOTest {
 	}
 
 	@Test
-	public void whenUrlIsInvalid_thenConstraintViolation() {
+	void whenUrlIsInvalid_thenConstraintViolation() {
 		TrailerUpdateDTO dto = new TrailerUpdateDTO();
 		dto.setId(1L);
 		dto.setTitle("fsadfsadf");
@@ -81,7 +81,7 @@ public class TrailerUpdateDTOTest {
 	}
 
 	@Test
-	public void whenCategoryIdIsNull_thenConstraintViolation() {
+	void whenCategoryIdIsNull_thenConstraintViolation() {
 		TrailerUpdateDTO dto = new TrailerUpdateDTO();
 		dto.setId(1L);
 		dto.setTitle("fsadfsadf");
@@ -96,7 +96,7 @@ public class TrailerUpdateDTOTest {
 	}
 
 	@Test
-	public void whenUserIdIsNull_thenConstraintViolation() {
+	void whenUserIdIsNull_thenConstraintViolation() {
 		TrailerUpdateDTO dto = new TrailerUpdateDTO();
 		dto.setId(1L);
 		dto.setTitle("fsadfsadf");

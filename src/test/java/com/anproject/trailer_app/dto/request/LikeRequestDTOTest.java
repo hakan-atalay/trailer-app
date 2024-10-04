@@ -16,13 +16,13 @@ public class LikeRequestDTOTest {
 	private Validator validator;
 
 	@BeforeEach
-	public void setUp() {
+	void setUp() {
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		validator = factory.getValidator();
 	}
 
 	@Test
-	public void whenValidLikeRequestDTO_thenNoConstraintViolations() {
+	void whenValidLikeRequestDTO_thenNoConstraintViolations() {
 		LikeRequestDTO dto = new LikeRequestDTO();
 		dto.setTrailerLike(true);
 		dto.setUserId(1L);
@@ -34,7 +34,7 @@ public class LikeRequestDTOTest {
 	}
 
 	@Test
-	public void whenNullUserId_thenConstraintViolation() {
+	void whenNullUserId_thenConstraintViolation() {
 		LikeRequestDTO dto = new LikeRequestDTO();
 		dto.setTrailerLike(true);
 		dto.setUserId(null);
@@ -47,7 +47,7 @@ public class LikeRequestDTOTest {
 	}
 
 	@Test
-	public void whenNullTrailerId_thenConstraintViolation() {
+	void whenNullTrailerId_thenConstraintViolation() {
 		LikeRequestDTO dto = new LikeRequestDTO();
 		dto.setTrailerLike(true);
 		dto.setUserId(1L);
@@ -60,7 +60,7 @@ public class LikeRequestDTOTest {
 	}
 
 	@Test
-	public void whenAllFieldsAreNull_thenMultipleConstraintViolations() {
+	void whenAllFieldsAreNull_thenMultipleConstraintViolations() {
 		LikeRequestDTO dto = new LikeRequestDTO();
 		dto.setTrailerLike(null);
 		dto.setUserId(null);

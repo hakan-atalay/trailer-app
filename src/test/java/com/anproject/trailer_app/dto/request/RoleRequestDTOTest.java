@@ -16,13 +16,13 @@ public class RoleRequestDTOTest {
 	private Validator validator;
 
 	@BeforeEach
-	public void setUp() {
+	void setUp() {
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		validator = factory.getValidator();
 	}
 
 	@Test
-	public void whenValidRoleRequestDTO_thenNoConstraintViolations() {
+	void whenValidRoleRequestDTO_thenNoConstraintViolations() {
 		RoleRequestDTO dto = new RoleRequestDTO();
 		dto.setRoleName("admin");
 
@@ -32,7 +32,7 @@ public class RoleRequestDTOTest {
 	}
 
 	@Test
-	public void whenRoleNameIsBlank_thenConstraintViolation() {
+	void whenRoleNameIsBlank_thenConstraintViolation() {
 		RoleRequestDTO dto = new RoleRequestDTO();
 		dto.setRoleName("");
 
@@ -43,7 +43,7 @@ public class RoleRequestDTOTest {
 	}
 
 	@Test
-	public void whenRoleNameIsNull_thenConstraintViolation() {
+	void whenRoleNameIsNull_thenConstraintViolation() {
 		RoleRequestDTO dto = new RoleRequestDTO();
 		dto.setRoleName(null);
 

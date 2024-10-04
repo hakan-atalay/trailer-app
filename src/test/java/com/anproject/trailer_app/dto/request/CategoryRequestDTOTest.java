@@ -19,13 +19,13 @@ public class CategoryRequestDTOTest {
 	private Validator validator;
 
 	@BeforeEach
-	public void setUp() {
+	void setUp() {
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		validator = factory.getValidator();
 	}
 
 	@Test
-	public void whenValidCategoryName_thenNoConstraintViolations() {
+	void whenValidCategoryName_thenNoConstraintViolations() {
 		CategoryRequestDTO dto = new CategoryRequestDTO();
 		dto.setCategoryName("Dizi");
 
@@ -35,7 +35,7 @@ public class CategoryRequestDTOTest {
 	}
 
 	@Test
-	public void whenBlankCategoryName_thenConstraintViolation() {
+	void whenBlankCategoryName_thenConstraintViolation() {
 		CategoryRequestDTO dto = new CategoryRequestDTO();
 		dto.setCategoryName("");
 
@@ -46,7 +46,7 @@ public class CategoryRequestDTOTest {
 	}
 
 	@Test
-	public void whenNullCategoryName_thenConstraintViolation() {
+	void whenNullCategoryName_thenConstraintViolation() {
 		CategoryRequestDTO dto = new CategoryRequestDTO();
 		dto.setCategoryName(null);
 

@@ -19,13 +19,13 @@ public class AppUserUpdateDTOTest {
 	private Validator validator;
 
 	@BeforeEach
-	public void setup() {
+	void setup() {
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		validator = factory.getValidator();
 	}
 
 	@Test
-	public void whenValidAppUserUpdateDTO_thenNoConstraintViolations() {
+	void whenValidAppUserUpdateDTO_thenNoConstraintViolations() {
 		AppUserUpdateDTO dto = new AppUserUpdateDTO();
 		dto.setId(1L);
 		dto.setNickname("ValidUser");
@@ -39,7 +39,7 @@ public class AppUserUpdateDTOTest {
 	}
 
 	@Test
-	public void whenNullId_thenConstraintViolation() {
+	void whenNullId_thenConstraintViolation() {
 		AppUserUpdateDTO dto = new AppUserUpdateDTO();
 		dto.setId(null);
 		dto.setNickname("ValidUser");
@@ -53,7 +53,7 @@ public class AppUserUpdateDTOTest {
 	}
 
 	@Test
-	public void whenEmptyNickname_thenConstraintViolation() {
+	void whenEmptyNickname_thenConstraintViolation() {
 		AppUserUpdateDTO dto = new AppUserUpdateDTO();
 		dto.setId(1L);
 		dto.setNickname("");
@@ -67,7 +67,7 @@ public class AppUserUpdateDTOTest {
 	}
 
 	@Test
-	public void whenInvalidEmail_thenConstraintViolation() {
+	void whenInvalidEmail_thenConstraintViolation() {
 		AppUserUpdateDTO dto = new AppUserUpdateDTO();
 		dto.setId(1L);
 		dto.setNickname("ValidUser");
@@ -81,7 +81,7 @@ public class AppUserUpdateDTOTest {
 	}
 
 	@Test
-	public void whenShortPassword_thenConstraintViolation() {
+	void whenShortPassword_thenConstraintViolation() {
 		AppUserUpdateDTO dto = new AppUserUpdateDTO();
 		dto.setId(1L);
 		dto.setNickname("ValidUser");
@@ -97,7 +97,7 @@ public class AppUserUpdateDTOTest {
 	}
 
 	@Test
-	public void whenValidPasswordButNoUpperCase_thenConstraintViolation() {
+	void whenValidPasswordButNoUpperCase_thenConstraintViolation() {
 		AppUserUpdateDTO dto = new AppUserUpdateDTO();
 		dto.setId(1L);
 		dto.setNickname("ValidUser");

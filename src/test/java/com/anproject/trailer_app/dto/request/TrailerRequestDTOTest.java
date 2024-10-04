@@ -16,13 +16,13 @@ public class TrailerRequestDTOTest {
 	private Validator validator;
 
 	@BeforeEach
-	public void setUp() {
+	void setUp() {
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		validator = factory.getValidator();
 	}
 
 	@Test
-	public void whenValidTrailerRequestDTO_thenNoConstraintViolations() {
+	void whenValidTrailerRequestDTO_thenNoConstraintViolations() {
 		TrailerRequestDTO dto = new TrailerRequestDTO();
 		dto.setTitle("fsadfsadf");
 		dto.setUrl("https://trailer-app/trailer");
@@ -35,7 +35,7 @@ public class TrailerRequestDTOTest {
 	}
 
 	@Test
-	public void whenTitleIsNull_thenConstraintViolation() {
+	void whenTitleIsNull_thenConstraintViolation() {
 		TrailerRequestDTO dto = new TrailerRequestDTO();
 		dto.setTitle(null);
 		dto.setUrl("https://trailer-app/trailer");
@@ -49,7 +49,7 @@ public class TrailerRequestDTOTest {
 	}
 
 	@Test
-	public void whenUrlIsInvalid_thenConstraintViolation() {
+	void whenUrlIsInvalid_thenConstraintViolation() {
 		TrailerRequestDTO dto = new TrailerRequestDTO();
 		dto.setTitle("fsadfsadf");
 		dto.setUrl("invalid-url");
@@ -63,7 +63,7 @@ public class TrailerRequestDTOTest {
 	}
 
 	@Test
-	public void whenUrlIsNull_thenNoConstraintViolation() {
+	void whenUrlIsNull_thenNoConstraintViolation() {
 		TrailerRequestDTO dto = new TrailerRequestDTO();
 		dto.setTitle("fsadfsadf");
 		dto.setUrl(null);
@@ -76,7 +76,7 @@ public class TrailerRequestDTOTest {
 	}
 
 	@Test
-	public void whenCategoryIdIsNull_thenConstraintViolation() {
+	void whenCategoryIdIsNull_thenConstraintViolation() {
 		TrailerRequestDTO dto = new TrailerRequestDTO();
 		dto.setTitle("fsadfsadf");
 		dto.setUrl("https://trailer-app/trailer");
@@ -90,7 +90,7 @@ public class TrailerRequestDTOTest {
 	}
 
 	@Test
-	public void whenUserIdIsNull_thenConstraintViolation() {
+	void whenUserIdIsNull_thenConstraintViolation() {
 		TrailerRequestDTO dto = new TrailerRequestDTO();
 		dto.setTitle("fsadfsadf");
 		dto.setUrl("https://trailer-app/trailer");

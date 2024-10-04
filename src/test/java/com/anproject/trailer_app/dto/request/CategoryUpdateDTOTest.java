@@ -16,13 +16,13 @@ public class CategoryUpdateDTOTest {
 	private Validator validator;
 
 	@BeforeEach
-	public void setUp() {
+	void setUp() {
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		validator = factory.getValidator();
 	}
 
 	@Test
-	public void whenValidCategoryUpdateDTO_thenNoConstraintViolations() {
+	void whenValidCategoryUpdateDTO_thenNoConstraintViolations() {
 		CategoryUpdateDTO dto = new CategoryUpdateDTO();
 		dto.setId(1L);
 		dto.setCategoryName("Oyun");
@@ -33,7 +33,7 @@ public class CategoryUpdateDTOTest {
 	}
 
 	@Test
-	public void whenNullId_thenConstraintViolation() {
+	void whenNullId_thenConstraintViolation() {
 		CategoryUpdateDTO dto = new CategoryUpdateDTO();
 		dto.setId(null);
 		dto.setCategoryName("Oyun");
@@ -45,7 +45,7 @@ public class CategoryUpdateDTOTest {
 	}
 
 	@Test
-	public void whenBlankCategoryName_thenConstraintViolation() {
+	void whenBlankCategoryName_thenConstraintViolation() {
 		CategoryUpdateDTO dto = new CategoryUpdateDTO();
 		dto.setId(1L);
 		dto.setCategoryName("");
@@ -57,7 +57,7 @@ public class CategoryUpdateDTOTest {
 	}
 
 	@Test
-	public void whenNullCategoryName_thenConstraintViolation() {
+	void whenNullCategoryName_thenConstraintViolation() {
 		CategoryUpdateDTO dto = new CategoryUpdateDTO();
 		dto.setId(1L);
 		dto.setCategoryName(null);

@@ -16,13 +16,13 @@ public class RoleUpdateDTOTest {
 	private Validator validator;
 
 	@BeforeEach
-	public void setUp() {
+	void setUp() {
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		validator = factory.getValidator();
 	}
 
 	@Test
-	public void whenValidRoleUpdateDTO_thenNoConstraintViolations() {
+	void whenValidRoleUpdateDTO_thenNoConstraintViolations() {
 		RoleUpdateDTO dto = new RoleUpdateDTO();
 		dto.setId(1L);
 		dto.setRoleName("USER");
@@ -33,7 +33,7 @@ public class RoleUpdateDTOTest {
 	}
 
 	@Test
-	public void whenIdIsNull_thenConstraintViolation() {
+	void whenIdIsNull_thenConstraintViolation() {
 		RoleUpdateDTO dto = new RoleUpdateDTO();
 		dto.setId(null);
 		dto.setRoleName("user");
@@ -45,7 +45,7 @@ public class RoleUpdateDTOTest {
 	}
 
 	@Test
-	public void whenRoleNameIsBlank_thenConstraintViolation() {
+	void whenRoleNameIsBlank_thenConstraintViolation() {
 		RoleUpdateDTO dto = new RoleUpdateDTO();
 		dto.setId(1L);
 		dto.setRoleName("");
@@ -57,7 +57,7 @@ public class RoleUpdateDTOTest {
 	}
 
 	@Test
-	public void whenRoleNameIsNull_thenConstraintViolation() {
+	void whenRoleNameIsNull_thenConstraintViolation() {
 		RoleUpdateDTO dto = new RoleUpdateDTO();
 		dto.setId(1L);
 		dto.setRoleName(null);

@@ -19,13 +19,13 @@ public class AppUserRequestDTOTest {
 	private Validator validator;
 
 	@BeforeEach
-	public void setUp() {
+	void setUp() {
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		validator = factory.getValidator();
 	}
 
 	@Test
-	public void whenValidAppUserRequestDTO_thenNoConstraintViolations() {
+	void whenValidAppUserRequestDTO_thenNoConstraintViolations() {
 		AppUserRequestDTO dto = new AppUserRequestDTO();
 		dto.setNickname("valid user");
 		dto.setEmail("user@gmail.com");
@@ -38,7 +38,7 @@ public class AppUserRequestDTOTest {
 	}
 
 	@Test
-	public void whenEmptyNickname_thenConstraintViolation() {
+	void whenEmptyNickname_thenConstraintViolation() {
 		AppUserRequestDTO dto = new AppUserRequestDTO();
 		dto.setNickname("");
 		dto.setEmail("user@gmail.com");
@@ -51,7 +51,7 @@ public class AppUserRequestDTOTest {
 	}
 
 	@Test
-	public void whenInvalidEmail_thenConstraintViolation() {
+	void whenInvalidEmail_thenConstraintViolation() {
 		AppUserRequestDTO dto = new AppUserRequestDTO();
 		dto.setNickname("ValidUser");
 		dto.setEmail("invalid-email");
@@ -64,7 +64,7 @@ public class AppUserRequestDTOTest {
 	}
 
 	@Test
-	public void whenShortPassword_thenConstraintViolation() {
+	void whenShortPassword_thenConstraintViolation() {
 		AppUserRequestDTO dto = new AppUserRequestDTO();
 		dto.setNickname("ValidUser");
 		dto.setEmail("user@gmail.com");
@@ -79,7 +79,7 @@ public class AppUserRequestDTOTest {
 	}
 
 	@Test
-	public void whenValidPasswordButNoUpperCase_thenConstraintViolation() {
+	void whenValidPasswordButNoUpperCase_thenConstraintViolation() {
 		AppUserRequestDTO dto = new AppUserRequestDTO();
 		dto.setNickname("ValidUser");
 		dto.setEmail("user@gmail.com");
