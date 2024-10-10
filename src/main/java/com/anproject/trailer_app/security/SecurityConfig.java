@@ -41,9 +41,18 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth", "/swagger-ui/index.html/**", "/**").permitAll()
-                .requestMatchers("/auth/user/**").hasAuthority("ROLE_USER")
-                .requestMatchers("/auth/admin/**").hasAuthority("ROLE_ADMIN")
+            		 .requestMatchers(
+            	                "/api/auth", 
+            	                "/api/users/save", 
+            	                "/api/categories/get-by-id/**", 
+            	                "/api/categories/all",
+            	                "/api/likes/get-by-id/**",
+            	                "/api/likes/all",
+            	                "/api/trailer-comments/get-by-id/**",
+            	                "/api/trailer-comments/all",
+            	                "/api/trailer/get-by-id/**",
+            	                "/api/trailer/all"
+            	            ).permitAll()
                 .anyRequest().authenticated() 
             )
             .sessionManagement(sess -> sess
