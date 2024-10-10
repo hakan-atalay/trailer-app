@@ -3,6 +3,7 @@ package com.anproject.trailer_app.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -42,10 +43,10 @@ public class AppUser {
 	@OneToMany(mappedBy = "user")
 	private List<Trailer> trailer = new ArrayList<>();
 
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
 	private List<Like> likes = new ArrayList<>();
 
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private List<TrailerComment> comments = new ArrayList<>();
 
 }

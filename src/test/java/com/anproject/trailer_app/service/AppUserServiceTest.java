@@ -14,6 +14,7 @@ import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.anproject.trailer_app.dto.request.AppUserRequestDTO;
 import com.anproject.trailer_app.dto.request.AppUserUpdateDTO;
@@ -25,6 +26,7 @@ import com.anproject.trailer_app.exception.ApiRequestException;
 import com.anproject.trailer_app.mapper.AppUserMapper;
 import com.anproject.trailer_app.repository.AppUserRepository;
 import com.anproject.trailer_app.repository.RoleRepository;
+import com.anproject.trailer_app.security.PasswordEncoderConfig;
 
 public class AppUserServiceTest {
 
@@ -32,14 +34,19 @@ public class AppUserServiceTest {
 	private AppUserRepository appUserRepository;
 	private RoleRepository roleRepository;
 	private AppUserMapper appUserMapper;
+	private PasswordEncoderConfig passwordEncoderConfig;
 
 	@BeforeEach
 	void setUp() {
 		appUserRepository = Mockito.mock(AppUserRepository.class);
 		roleRepository = Mockito.mock(RoleRepository.class);
 		appUserMapper = Mockito.mock(AppUserMapper.class);
+		passwordEncoderConfig = Mockito.mock(PasswordEncoderConfig.class);
+				
+		BCryptPasswordEncoder passwordEncoder = Mockito.mock(BCryptPasswordEncoder.class);
+	    when(passwordEncoderConfig.bCryptPasswordEncoder()).thenReturn(passwordEncoder);
 
-		appUserService = new AppUserService(appUserRepository, roleRepository, appUserMapper);
+		appUserService = new AppUserService(appUserRepository, roleRepository, appUserMapper, passwordEncoderConfig);
 	}
 
 	@Test

@@ -16,81 +16,117 @@ import jakarta.validation.ValidatorFactory;
 
 public class AppUserRequestDTOTest {
 
-	private Validator validator;
+    private Validator validator;
 
-	@BeforeEach
-	void setUp() {
-		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-		validator = factory.getValidator();
-	}
+    @BeforeEach
+    void setUp() {
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        validator = factory.getValidator();
+    }
 
-	@Test
-	void whenValidAppUserRequestDTO_thenNoConstraintViolations() {
-		AppUserRequestDTO dto = new AppUserRequestDTO();
-		dto.setNickname("valid user");
-		dto.setEmail("user@gmail.com");
-		dto.setPassword("Valid123");
-		dto.setRoleId(2L);
+    @Test
+    void whenValidAppUserRequestDTO_thenNoConstraintViolations() {
+        AppUserRequestDTO dto = new AppUserRequestDTO();
+        dto.setNickname("validUser");
+        dto.setEmail("user@gmail.com");
+        dto.setPassword("Valid123");
+        dto.setRoleId(2L);
 
-		Set<ConstraintViolation<AppUserRequestDTO>> violations = validator.validate(dto);
+        Set<ConstraintViolation<AppUserRequestDTO>> violations = validator.validate(dto);
+        assertTrue(violations.isEmpty());
+    }
 
-		assertTrue(violations.isEmpty());
-	}
+    @Test
+    void whenEmptyNickname_thenConstraintViolation() {
+        AppUserRequestDTO dto = new AppUserRequestDTO();
+        dto.setNickname(""); 
+        dto.setEmail("user@gmail.com");
+        dto.setPassword("Valid123");
 
-	@Test
-	void whenEmptyNickname_thenConstraintViolation() {
-		AppUserRequestDTO dto = new AppUserRequestDTO();
-		dto.setNickname("");
-		dto.setEmail("user@gmail.com");
-		dto.setPassword("Valid123");
+        Set<ConstraintViolation<AppUserRequestDTO>> violations = validator.validate(dto);
+        assertFalse(violations.isEmpty());
 
-		Set<ConstraintViolation<AppUserRequestDTO>> violations = validator.validate(dto);
+        String message = violations.iterator().next().getMessage();
+        assertEquals("Kullanıcı adı 4 ile 20 karakter arasında olmalı.", message);
+    }
 
-		assertFalse(violations.isEmpty());
-		assertEquals("Kullanıcı adı boş olamaz.", violations.iterator().next().getMessage());
-	}
+    @Test
+    void whenNicknameTooShort_thenConstraintViolation() {
+        AppUserRequestDTO dto = new AppUserRequestDTO();
+        dto.setNickname("abc"); 
+        dto.setEmail("user@gmail.com");
+        dto.setPassword("Valid123");
 
-	@Test
-	void whenInvalidEmail_thenConstraintViolation() {
-		AppUserRequestDTO dto = new AppUserRequestDTO();
-		dto.setNickname("ValidUser");
-		dto.setEmail("invalid-email");
-		dto.setPassword("Valid123");
+        Set<ConstraintViolation<AppUserRequestDTO>> violations = validator.validate(dto);
+        assertFalse(violations.isEmpty());
 
-		Set<ConstraintViolation<AppUserRequestDTO>> violations = validator.validate(dto);
+        String message = violations.iterator().next().getMessage();
+        assertEquals("Kullanıcı adı 4 ile 20 karakter arasında olmalı.", message);
+    }
 
-		assertFalse(violations.isEmpty());
-		assertEquals("Geçerli bir email adresi giriniz.", violations.iterator().next().getMessage());
-	}
+    @Test
+    void whenNicknameTooLong_thenConstraintViolation() {
+        AppUserRequestDTO dto = new AppUserRequestDTO();
+        dto.setNickname("aVeryLongNicknameExceedingLimit"); 
+        dto.setEmail("user@gmail.com");
+        dto.setPassword("Valid123");
 
-	@Test
-	void whenShortPassword_thenConstraintViolation() {
-		AppUserRequestDTO dto = new AppUserRequestDTO();
-		dto.setNickname("ValidUser");
-		dto.setEmail("user@gmail.com");
-		dto.setPassword("short");
+        Set<ConstraintViolation<AppUserRequestDTO>> violations = validator.validate(dto);
+        assertFalse(violations.isEmpty());
 
-		Set<ConstraintViolation<AppUserRequestDTO>> violations = validator.validate(dto);
+        String message = violations.iterator().next().getMessage();
+        assertEquals("Kullanıcı adı 4 ile 20 karakter arasında olmalı.", message);
+    }
 
-		assertFalse(violations.isEmpty());
-		assertEquals(
-				"Şifre en az bir büyük harf, bir küçük harf, bir rakam ve toplam en az 8 karakter uzunluğunda olmalıdır.",
-				violations.iterator().next().getMessage());
-	}
+    @Test
+    void whenInvalidEmail_thenConstraintViolation() {
+        AppUserRequestDTO dto = new AppUserRequestDTO();
+        dto.setNickname("ValidUser");
+        dto.setEmail("invalid-email"); 
+        dto.setPassword("Valid123");
 
-	@Test
-	void whenValidPasswordButNoUpperCase_thenConstraintViolation() {
-		AppUserRequestDTO dto = new AppUserRequestDTO();
-		dto.setNickname("ValidUser");
-		dto.setEmail("user@gmail.com");
-		dto.setPassword("valid123");
+        Set<ConstraintViolation<AppUserRequestDTO>> violations = validator.validate(dto);
+        assertFalse(violations.isEmpty());
+        assertEquals("Geçerli bir email adresi giriniz.", violations.iterator().next().getMessage());
+    }
 
-		Set<ConstraintViolation<AppUserRequestDTO>> violations = validator.validate(dto);
+    @Test
+    void whenEmptyEmail_thenConstraintViolation() {
+        AppUserRequestDTO dto = new AppUserRequestDTO();
+        dto.setNickname("ValidUser");
+        dto.setEmail(""); 
+        dto.setPassword("Valid123");
 
-		assertFalse(violations.isEmpty());
-		assertEquals(
-				"Şifre en az bir büyük harf, bir küçük harf, bir rakam ve toplam en az 8 karakter uzunluğunda olmalıdır.",
-				violations.iterator().next().getMessage());
-	}
+        Set<ConstraintViolation<AppUserRequestDTO>> violations = validator.validate(dto);
+        assertFalse(violations.isEmpty());
+        assertEquals("Email boş olamaz.", violations.iterator().next().getMessage());
+    }
 
+    @Test
+    void whenShortPassword_thenConstraintViolation() {
+        AppUserRequestDTO dto = new AppUserRequestDTO();
+        dto.setNickname("ValidUser");
+        dto.setEmail("user@gmail.com");
+        dto.setPassword("short"); 
+
+        Set<ConstraintViolation<AppUserRequestDTO>> violations = validator.validate(dto);
+        assertFalse(violations.isEmpty());
+        assertEquals(
+            "Şifre en az bir büyük harf, bir küçük harf, bir rakam ve toplam en az 8 karakter uzunluğunda olmalıdır.",
+            violations.iterator().next().getMessage());
+    }
+
+    @Test
+    void whenValidPasswordButNoUpperCase_thenConstraintViolation() {
+        AppUserRequestDTO dto = new AppUserRequestDTO();
+        dto.setNickname("ValidUser");
+        dto.setEmail("user@gmail.com");
+        dto.setPassword("valid123"); 
+
+        Set<ConstraintViolation<AppUserRequestDTO>> violations = validator.validate(dto);
+        assertFalse(violations.isEmpty());
+        assertEquals(
+            "Şifre en az bir büyük harf, bir küçük harf, bir rakam ve toplam en az 8 karakter uzunluğunda olmalıdır.",
+            violations.iterator().next().getMessage());
+    }
 }

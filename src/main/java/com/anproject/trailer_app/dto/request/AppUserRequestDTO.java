@@ -11,7 +11,6 @@ import lombok.Setter;
 @Setter
 public class AppUserRequestDTO {
 	
-	@NotBlank(message = "Kullanıcı adı boş olamaz.")
 	@Size(min=4, max=20, message = "Kullanıcı adı 4 ile 20 karakter arasında olmalı.")
 	private String nickname;
 	

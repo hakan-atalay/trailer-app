@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,12 +34,14 @@ public class TrailerController {
 	}
 
 	@PostMapping("/save")
+	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	public ResponseEntity<Void> saveTrailer(@Valid @RequestBody TrailerRequestDTO trailerRequestDto) {
 		trailerService.saveTrailer(trailerRequestDto);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 
 	@PutMapping("/update/{id}")
+	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	public ResponseEntity<Void> updateTrailer(@PathVariable Long id, @Valid @RequestBody TrailerUpdateDTO trailerUpdateDto) {
 		trailerUpdateDto.setId(id);
 		trailerService.updateTrailer(trailerUpdateDto);
@@ -46,6 +49,7 @@ public class TrailerController {
 	}
 
 	@DeleteMapping("/delete/{id}")
+	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	public ResponseEntity<Void> deleteTrailer(@PathVariable Long id) {
 		trailerService.deleteTrailer(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
